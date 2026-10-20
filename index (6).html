@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yukino — custom minecraft skins</title>
+<meta name="description" content="Yukino — Minecraft skin maker from Ukraine. Custom skins, portfolio and contacts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&family=Unbounded:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0a14;--fg:#efe9fb;--mut:#9a8fb5;--ac:#8b7bff;--ac2:#5b5bf0;--b:#3b82f6;--v:#a259ff;--grad:linear-gradient(100deg,#3b82f6,#7c6bff 50%,#a259ff);--card:#17122399;--line:#2a2140}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 "Segoe UI",system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(60vw 60vw at 80% 5%,#a259ff2e,transparent 60%),radial-gradient(50vw 50vw at 5% 85%,#3b82f633,transparent 60%),linear-gradient(160deg,#080b1c 0%,#0d0a14 55%,#150a24 100%);pointer-events:none;z-index:-1}
+a{color:inherit;text-decoration:none}
+header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:#0d0a14cc;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{font-weight:700;letter-spacing:.08em}
+nav{display:flex;gap:26px;font-size:14px;letter-spacing:.12em}
+nav a{color:var(--mut);transition:color .2s}
+nav a:hover{color:var(--ac)}
+.lang{display:flex;gap:8px;font-size:13px}
+.lang button{background:none;border:1px solid var(--line);color:var(--mut);padding:4px 10px;border-radius:6px;cursor:pointer}
+.lang button.on{color:#fff;background:var(--grad);border-color:transparent}
+section{padding:110px 5vw 60px;max-width:1150px;margin:auto}
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:30px}
+.hero img{width:100%;max-width:420px;justify-self:center;image-rendering:pixelated;filter:drop-shadow(0 0 50px #6f78ff77);animation:fl 5s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-14px)}}
+.tag{color:var(--ac);font-size:13px;letter-spacing:.2em}
+h1{font-size:clamp(36px,6vw,72px);line-height:1.05;margin:14px 0 22px}
+h1 span{color:var(--ac)}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{padding:12px 26px;border-radius:999px;border:1px solid #6f78ff;font-size:14px;letter-spacing:.1em;transition:.2s}
+.btn.f{background:var(--grad);border-color:transparent}
+.btn:hover{background:var(--grad);border-color:transparent;box-shadow:0 0 26px #6f78ff88}
+.clock{margin-top:34px;color:var(--mut);font-size:13px;letter-spacing:.15em}
+h2{font-size:14px;letter-spacing:.25em;color:var(--ac);margin-bottom:28px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;text-align:center;transition:.25s}
+.card:hover{transform:translateY(-6px);border-color:#7c6bff;box-shadow:0 10px 40px #4f6bff44}
+.card img{width:100%;image-rendering:pixelated;cursor:zoom-in}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.about p{color:#cfc6e6;font-size:18px}
+.facts{display:grid;gap:12px}
+.facts div{border:1px solid var(--line);border-radius:12px;padding:14px 18px;background:var(--card)}
+.facts b{display:block;color:#8fb4ff;font-size:12px;letter-spacing:.2em;font-weight:600}
+.links{display:flex;gap:14px;flex-wrap:wrap}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:50px 0 40px}
+#lb{position:fixed;inset:0;background:#000d;display:none;place-items:center;z-index:20;cursor:zoom-out}
+#lb.on{display:grid}
+#lb img{max-height:90vh;max-width:90vw;image-rendering:pixelated}
+[data-r]{display:none}
+body.ru [data-e]{display:none}
+body.ru [data-r]{display:revert}
+#px{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.hero img{cursor:pointer;transition:transform .3s}
+.hint{color:var(--mut);font-size:12px;letter-spacing:.15em;text-align:center;margin-top:10px}
+.heroimg{display:flex;flex-direction:column;align-items:center}
+.card{transform-style:preserve-3d;will-change:transform}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+.mq{overflow:hidden;white-space:nowrap;border-block:1px solid var(--line);padding:14px 0;margin-top:40px;color:#8fb4ff;letter-spacing:.3em;font-size:14px}
+.mq div{display:inline-block;animation:mq 25s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.trail{position:fixed;width:10px;height:10px;background:var(--b);pointer-events:none;z-index:30;animation:tr .7s forwards;image-rendering:pixelated}
+@keyframes tr{to{opacity:0;transform:translateY(20px) scale(.2)}}
+#toast{position:fixed;bottom:30px;left:50%;transform:translate(-50%,80px);background:var(--grad);padding:12px 22px;border-radius:999px;transition:.3s;z-index:40;opacity:0}
+#toast.on{transform:translate(-50%,0);opacity:1}
+body.party::after{content:"";position:fixed;inset:0;background:radial-gradient(70vw 50vw at 50% 0%,#ff7a0026,transparent 70%);pointer-events:none;z-index:-1}
+
+body{font-family:"Space Grotesk","Segoe UI",system-ui,sans-serif}
+h1,.logo,h2{font-family:"Pixelify Sans","Unbounded",monospace}
+h1{font-weight:700;letter-spacing:.01em;background:linear-gradient(100deg,#fff 0%,#8fb4ff 30%,#7c6bff 55%,#c58bff 75%,#fff 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sh 6s linear infinite}
+h1 span{-webkit-text-fill-color:transparent}
+@keyframes sh{to{background-position:-250% 0}}
+h1:hover{animation:sh 6s linear infinite,gl .35s steps(2) infinite}
+@keyframes gl{0%{text-shadow:3px 0 #ff2bd6,-3px 0 #2bd9ff}50%{text-shadow:-3px 2px #ff2bd6,3px -2px #2bd9ff}100%{text-shadow:2px -2px #ff2bd6,-2px 2px #2bd9ff}}
+h2{font-size:22px;letter-spacing:.2em;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block}
+.logo{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.tag{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block}
+.btn,.tag,nav a,.clock{font-family:"Unbounded",sans-serif;font-size:12px}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#3b82f6,#a259ff);z-index:50;box-shadow:0 0 12px #6f78ff}
+.tw{font-family:"Pixelify Sans",monospace;font-size:22px;color:#8fb4ff;margin-bottom:12px;min-height:34px}
+.tw::after{content:"▌";animation:bl .8s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+.card{position:relative;overflow:hidden}
+.card::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,#ffffff22,transparent);transform:skewX(-20deg);transition:left .6s}
+.card:hover::after{left:130%}
+.burst{position:fixed;width:8px;height:8px;pointer-events:none;z-index:60;background:var(--b)}
+#cur{position:fixed;top:0;left:0;width:34px;height:34px;border:2px solid #7c6bff;pointer-events:none;z-index:70;transition:width .2s,height .2s,background .2s,margin .2s;mix-blend-mode:screen}
+#cur.big{width:56px;height:56px;margin:-11px 0 0 -11px;background:#6f78ff33}
+@media(pointer:fine){body{cursor:none}a,button,img{cursor:none!important}}
+@media(pointer:coarse){#cur{display:none}}
+.btn{position:relative}
+.dc{border-color:#7289da}
+.dc:hover{background:#5865f2;border-color:#5865f2;box-shadow:0 0 24px #5865f299}
+
+body.party{--b:#ff7a00;--ac:#ff9a3c;--grad:linear-gradient(100deg,#ff7a00,#ff4fa0 50%,#a259ff)}
+body.party::before{background:radial-gradient(60vw 60vw at 80% 5%,#a259ff33,transparent 60%),radial-gradient(50vw 50vw at 5% 85%,#ff7a0033,transparent 60%),linear-gradient(160deg,#120805 0%,#0d0a14 55%,#1a0a1f 100%)}
+body.party h1{background-image:linear-gradient(100deg,#fff 0%,#ffc27a 30%,#ff7a00 55%,#c58bff 75%,#fff 100%);background-size:250% 100%}
+body.party .btn{border-color:#ff9a3c}
+body.party .tw,body.party .mq,body.party .facts b{color:#ffb066}
+body.party .hero img{filter:drop-shadow(0 0 50px #ff7a0088)}
+body.party .card:hover{border-color:#ff9a3c;box-shadow:0 10px 40px #ff7a0044}
+.web{position:fixed;top:0;width:min(34vw,260px);height:min(34vw,260px);z-index:5;pointer-events:none;display:none;opacity:.55}
+.web.l{left:0}
+.web.r{right:0;transform:scaleX(-1)}
+body.party .web{display:block;animation:wb .5s ease-out}
+@keyframes wb{from{opacity:0;transform:scale(.3)}}
+body.party .web.r{animation:wbr .5s ease-out}
+@keyframes wbr{from{opacity:0;transform:scaleX(-.3) scaleY(.3)}to{transform:scaleX(-1)}}
+@media(max-width:800px){nav{display:none}.hero,.about{grid-template-columns:1fr;text-align:center}.hero{padding-top:90px}.btns{justify-content:center}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="cur"></div>
+<canvas id="px"></canvas>
+<div id="toast"></div>
+<svg class="web l" viewBox="0 0 200 200" fill="none" stroke="#e9e1ff" stroke-width="1.2"><path d="M0 0L200 0M0 0L190 60M0 0L160 120M0 0L110 170M0 0L50 195M0 0L0 200"/><path d="M0 28Q40 40 55 0M0 62Q55 62 80 0M0 100Q80 90 115 0M0 142Q100 125 150 0M0 182Q120 160 190 20"/><circle cx="62" cy="62" r="0"/></svg>
+<svg class="web r" viewBox="0 0 200 200" fill="none" stroke="#e9e1ff" stroke-width="1.2"><path d="M0 0L200 0M0 0L190 60M0 0L160 120M0 0L110 170M0 0L50 195M0 0L0 200"/><path d="M0 28Q40 40 55 0M0 62Q55 62 80 0M0 100Q80 90 115 0M0 142Q100 125 150 0M0 182Q120 160 190 20"/><circle cx="62" cy="62" r="0"/></svg>
+<header>
+  <a class="logo" href="#home">YUKINO</a>
+  <nav>
+    <a href="#home">HOME</a>
+    <a href="#works"><span data-e>WORKS</span><span data-r>РАБОТЫ</span></a>
+    <a href="#about"><span data-e>ABOUT</span><span data-r>ОБО МНЕ</span></a>
+    <a href="#contacts"><span data-e>CONTACTS</span><span data-r>КОНТАКТЫ</span></a>
+  </nav>
+  <div class="lang"><button id="en" class="on">EN</button><button id="ru">RU</button></div>
+</header>
+
+<section class="hero" id="home">
+  <div>
+    <div class="tag"><span data-e>MINECRAFT SKINMAKER</span><span data-r>СКИНМЕЙКЕР MINECRAFT</span></div>
+    <h1><span data-e>Custom skins<br>made with <span>soul</span></span><span data-r>Скины на заказ,<br>сделанные с <span>душой</span></span></h1>
+    <div class="tw" id="tw"></div>
+    <p style="color:var(--mut);max-width:440px"><span data-e>I’m Yukino, a skin maker from Ukraine. Unique pixel characters with clean shading.</span><span data-r>Я Юкино, скинмейкер из Украины. Уникальные пиксельные персонажи с чистой шейдингом‑проработкой.</span></p>
+    <div class="btns">
+      <a class="btn f" href="#works"><span data-e>WORKS</span><span data-r>РАБОТЫ</span></a>
+      <a class="btn" href="#contacts"><span data-e>CONTACTS</span><span data-r>КОНТАКТЫ</span></a>
+    </div>
+    <div class="clock">KYIV <span id="t">00:00:00</span></div>
+  </div>
+  <div class="heroimg">
+    <img id="hero" src="assets/skin-5.png" alt="Minecraft skin by Yukino">
+    <div class="hint"><span data-e>↑ CLICK ME</span><span data-r>↑ НАЖМИ НА МЕНЯ</span></div>
+  </div>
+</section>
+<div class="mq"><div>CUSTOM SKINS ✦ PIXEL ART ✦ SHADING ✦ LAYERS ✦ CUSTOM SKINS ✦ PIXEL ART ✦ SHADING ✦ LAYERS ✦ CUSTOM SKINS ✦ PIXEL ART ✦ SHADING ✦ LAYERS ✦ CUSTOM SKINS ✦ PIXEL ART ✦ SHADING ✦ LAYERS ✦ </div></div>
+
+<section id="works" class="rv">
+  <h2><span data-e>WORKS</span><span data-r>РАБОТЫ</span></h2>
+  <div class="grid">
+    <div class="card"><img src="assets/skin-1.png" alt="Skin 1"></div>
+    <div class="card"><img src="assets/skin-2.png" alt="Skin 2"></div>
+    <div class="card"><img src="assets/skin-3.png" alt="Skin 3"></div>
+    <div class="card"><img src="assets/skin-4.png" alt="Skin 4"></div>
+    <div class="card"><img src="assets/skin-5.png" alt="Skin 5"></div>
+    <div class="card"><img src="assets/skin-6.png" alt="Skin 6"></div>
+    <div class="card"><img src="assets/skin-7.png" alt="Skin 7"></div>
+    <div class="card"><img src="assets/skin-8.png" alt="Skin 8"></div>
+    <div class="card"><img src="assets/skin-9.png" alt="Skin 9"></div>
+    <div class="card"><img src="assets/skin-10.png" alt="Skin 10"></div>
+  </div>
+</section>
+
+<section id="about" class="rv">
+  <h2><span data-e>ABOUT</span><span data-r>ОБО МНЕ</span></h2>
+  <div class="about">
+    <p><span data-e>Hi! I’m Yukino, 18, from Ukraine. I draw Minecraft skins: from simple outfits to detailed characters with layered clothes and custom shading. Write to me and we’ll make yours.</span><span data-r>Привет! Я Юкино, мне 18, я из Украины. Рисую скины для Minecraft: от простых нарядов до детальных персонажей с многослойной одеждой и собственной шейдингой. Напиши мне, и сделаем твой скин.</span></p>
+    <div class="facts">
+      <div><b><span data-e>ROLE</span><span data-r>РОЛЬ</span></b>Skinmaker</div>
+      <div><b><span data-e>FROM</span><span data-r>ИЗ</span></b><span data-e>Ukraine</span><span data-r>Украина</span></div>
+      <div><b><span data-e>LANGUAGES</span><span data-r>ЯЗЫКИ</span></b>RU / EN</div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts" class="rv">
+  <h2><span data-e>CONTACTS</span><span data-r>КОНТАКТЫ</span></h2>
+  <p style="color:var(--mut);margin-bottom:18px"><span data-e>Tip: right-click email to copy it.</span><span data-r>Подсказка: правый клик по EMAIL копирует адрес.</span></p>
+  <div class="links">
+    <a class="btn" href="https://t.me/yukinoshitooo" target="_blank" rel="noopener">TELEGRAM</a>
+    <a class="btn" href="mailto:yukiwertarion@gmail.com" data-copy="yukiwertarion@gmail.com">EMAIL</a>
+    <a class="btn dc" href="https://discord.com/users/743515208265498726" target="_blank" rel="noopener">DISCORD</a>
+    <a class="btn" href="https://github.com/yukin0ww" target="_blank" rel="noopener">GITHUB</a>
+  </div>
+</section>
+
+<footer>© 2026 Yukino</footer>
+<div id="lb"><img alt=""></div>
+
+<script>
+var b=document.body;
+function setL(l){b.classList.toggle("ru",l==="ru");document.documentElement.lang=l;
+document.getElementById("en").classList.toggle("on",l==="en");
+document.getElementById("ru").classList.toggle("on",l==="ru");
+try{localStorage.setItem("lang",l)}catch(e){}}
+document.getElementById("en").onclick=function(){setL("en")};
+document.getElementById("ru").onclick=function(){setL("ru")};
+var s="";try{s=localStorage.getItem("lang")}catch(e){}
+setL(s||((navigator.language||"").slice(0,2)==="ru"?"ru":"en"));
+function tick(){document.getElementById("t").textContent=new Date().toLocaleTimeString("en-GB",{timeZone:"Europe/Kyiv"})}
+tick();setInterval(tick,1000);
+var lb=document.getElementById("lb");
+document.querySelectorAll(".card img").forEach(function(i){i.onclick=function(){lb.querySelector("img").src=i.src;lb.classList.add("on")}});
+lb.onclick=function(){lb.classList.remove("on")};
+
+// candies + halloween pumpkins
+(function(){var c=document.getElementById("px"),x=c.getContext("2d"),P=[],G=[],Bt=[],W,H,E=["🍬","🍭","🍫","🍩","🧁"];
+function rs(){W=c.width=innerWidth;H=c.height=innerHeight}rs();onresize=rs;
+for(var i=0;i<26;i++)P.push({e:E[i%E.length],x:Math.random()*2000,y:Math.random()*1200,s:20+Math.random()*22,v:.3+Math.random()*.7,r:Math.random()*6.28,w:(Math.random()-.5)*.03,d:Math.random()*6.28});
+(function f(t){x.clearRect(0,0,W,H);x.textAlign="center";x.textBaseline="middle";
+x.globalAlpha=.75;P.forEach(function(p){p.y-=p.v;p.r+=p.w;p.d+=.01;if(p.y<-40){p.y=H+40;p.x=Math.random()*W}
+x.save();x.translate(p.x+Math.sin(p.d)*20,p.y);x.rotate(p.r);x.font=p.s+"px serif";x.fillText(p.e,0,0);x.restore()});
+if(b.classList.contains("party")&&G.length<28&&Math.random()<.12)G.push({x:Math.random()*W,y:-60,s:30+Math.random()*40,v:1+Math.random()*2.2,r:Math.random()*6.28,w:(Math.random()-.5)*.05,d:Math.random()*6.28});
+if(b.classList.contains("party")&&Bt.length<5&&Math.random()<.006){var ltr=Math.random()<.5;Bt.push({x:ltr?-40:W+40,y:60+Math.random()*H*.5,v:(ltr?1:-1)*(2+Math.random()*2.5),s:26+Math.random()*20,p:Math.random()*6.28,a:20+Math.random()*30})}
+x.globalAlpha=1;for(var j=Bt.length-1;j>=0;j--){var q=Bt[j];q.x+=q.v;q.p+=.09;x.save();x.translate(q.x,q.y+Math.sin(q.p)*q.a);x.scale(q.v<0?1:-1,1);x.rotate(Math.sin(q.p)*.25);x.font=q.s+"px serif";x.fillText("🦇",0,0);x.restore();if(q.x<-80||q.x>W+80)Bt.splice(j,1)}
+for(var i=G.length-1;i>=0;i--){var g=G[i];g.y+=g.v;g.r=Math.sin(g.d+=.03)*.4;
+x.save();x.translate(g.x+Math.sin(g.d)*14,g.y);x.rotate(g.r);x.font=g.s+"px serif";x.fillText("🎃",0,0);x.restore();
+if(g.y>H+80)G.splice(i,1)}
+requestAnimationFrame(f)})()})();
+// cursor trail
+function pc(){return b.classList.contains("party")?(Math.random()<.5?"#ff7a00":"#a259ff"):(Math.random()<.5?"#3b82f6":"#a259ff")}
+var lt=0;addEventListener("mousemove",function(e){var n=Date.now();if(n-lt<40)return;lt=n;
+var d=document.createElement("div");d.className="trail";d.style.background=pc();d.style.left=e.clientX+"px";d.style.top=e.clientY+"px";
+document.body.appendChild(d);setTimeout(function(){d.remove()},700)});
+// tilt cards
+document.querySelectorAll(".card").forEach(function(c){
+c.addEventListener("mousemove",function(e){var r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+c.style.transform="perspective(600px) rotateY("+px*16+"deg) rotateX("+(-py*16)+"deg) translateY(-6px)"});
+c.addEventListener("mouseleave",function(){c.style.transform=""})});
+// scroll reveal
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("in")})},{threshold:.12});
+document.querySelectorAll(".rv").forEach(function(el){io.observe(el)});
+// hero click: cycle skins
+var hi=document.getElementById("hero"),k=5,clicks=0;
+hi.onclick=function(){k=k%10+1;hi.src="assets/skin-"+k+".png";hi.style.transform="rotateY(360deg) scale(1.08)";
+setTimeout(function(){hi.style.transform=""},300);clicks++;if(clicks===10){toast("🎃 HALLOWEEN MODE!");b.classList.toggle("party");clicks=0}};
+// toast + copy email
+var tt;function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("on")},2200)}
+document.querySelectorAll("[data-copy]").forEach(function(a){a.addEventListener("contextmenu",function(e){e.preventDefault();
+try{navigator.clipboard.writeText(a.dataset.copy);toast(b.classList.contains("ru")?"Скопировано ✓":"Copied ✓")}catch(x){}})});
+// konami
+var seq=[38,38,40,40,37,39,37,39,66,65],pos=0;
+addEventListener("keydown",function(e){pos=e.keyCode===seq[pos]?pos+1:0;if(pos===seq.length){pos=0;b.classList.toggle("party");toast("🎃 BOO!")}});
+// tab title
+var ot=document.title;document.addEventListener("visibilitychange",function(){document.title=document.hidden?"come back ✦ Yukino":ot});
+
+// font-loaded safe: scroll progress
+addEventListener("scroll",function(){var h=document.documentElement;document.getElementById("bar").style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%"});
+// custom cursor
+var cur=document.getElementById("cur");
+addEventListener("mousemove",function(e){cur.style.transform="translate("+(e.clientX-17)+"px,"+(e.clientY-17)+"px)"});
+document.querySelectorAll("a,button,.card img").forEach(function(el){el.addEventListener("mouseenter",function(){cur.classList.add("big")});el.addEventListener("mouseleave",function(){cur.classList.remove("big")})});
+// typewriter
+var W={en:["skins","outfits","characters","pixel art"],ru:["скины","наряды","персонажей","пиксель-арт"]},wi=0,ci=0,del=false,tw=document.getElementById("tw");
+(function ty(){var l=b.classList.contains("ru")?"ru":"en",pre=l==="ru"?"Рисую ":"I draw ",w=W[l][wi%4];
+ci+=del?-1:1;tw.textContent=pre+w.slice(0,ci);var d=del?45:95;
+if(!del&&ci===w.length){del=true;d=1300}else if(del&&ci===0){del=false;wi++;d=300}setTimeout(ty,d)})();
+// hero parallax
+var hr=document.querySelector(".heroimg");
+addEventListener("mousemove",function(e){var x=(e.clientX/innerWidth-.5)*24,y=(e.clientY/innerHeight-.5)*24;hr.style.transform="translate("+x+"px,"+y+"px)"});
+// magnetic buttons
+document.querySelectorAll(".btn").forEach(function(a){
+a.addEventListener("mousemove",function(e){var r=a.getBoundingClientRect();a.style.transform="translate("+((e.clientX-r.left-r.width/2)*.25)+"px,"+((e.clientY-r.top-r.height/2)*.35)+"px)"});
+a.addEventListener("mouseleave",function(){a.style.transform=""})});
+// click burst
+addEventListener("click",function(e){for(var i=0;i<14;i++){var d=document.createElement("div");d.className="burst";d.style.background=pc();d.style.left=e.clientX+"px";d.style.top=e.clientY+"px";
+var a=Math.random()*6.28,v=40+Math.random()*70;document.body.appendChild(d);
+(function(d,a,v){d.animate([{transform:"translate(0,0) scale(1)",opacity:1},{transform:"translate("+Math.cos(a)*v+"px,"+Math.sin(a)*v+"px) scale(0)",opacity:0}],{duration:600,easing:"ease-out"}).onfinish=function(){d.remove()}})(d,a,v)}});
+</script>
+</body>
+</html>
