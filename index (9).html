@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yukino — Minecraft skinmaker</title>
+<meta name="description" content="Yukino — Minecraft skin maker from Ukraine. Portfolio, contacts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Onest:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--fg:#f2f2f2;--mut:#8c8c8c;--line:#2b2b2b;--inv:#f2f2f2;--on:#000}
+body.inv{--bg:#f2f2f2;--fg:#0a0a0a;--mut:#6b6b6b;--line:#cfcfcf;--inv:#0a0a0a;--on:#f2f2f2}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 "Onest","Segoe UI",system-ui,sans-serif;overflow-x:hidden;transition:background .4s,color .4s}
+a{color:inherit;text-decoration:none}
+.mono,small,nav,.lang button,.btn,.lab,.cl,#ct,#inv{font-family:"JetBrains Mono",ui-monospace,Consolas,monospace}
+.grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+body.inv .grain{filter:invert(1)}
+#bar{position:fixed;top:0;left:0;height:2px;width:0;background:var(--fg);z-index:80}
+#ld{position:fixed;inset:0;z-index:100;background:#000;color:#f2f2f2;display:flex;align-items:flex-end;justify-content:space-between;padding:4vw;transition:transform .8s cubic-bezier(.77,0,.18,1);animation:ldo .1s 3s forwards}
+#ld.off{transform:translateY(-100%)}
+#ld b{font:800 clamp(60px,16vw,200px)/.8 "Onest",sans-serif;letter-spacing:-.04em}
+#ld span{font:500 12px "JetBrains Mono",monospace;letter-spacing:.2em}
+@keyframes ldo{to{visibility:hidden}}
+header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 4vw;background:var(--bg);border-bottom:1px solid var(--line);transition:background .4s}
+.logo{font:800 18px "Onest",sans-serif;letter-spacing:.02em}
+nav{display:flex;gap:28px;font-size:12px;letter-spacing:.14em}
+nav a{color:var(--mut);transition:color .2s}
+nav a:hover{color:var(--fg)}
+.hr{display:flex;align-items:center;gap:12px}
+.cl{font-size:12px;color:var(--mut);letter-spacing:.1em}
+#inv,.lang button,#ct{background:none;border:1px solid var(--line);color:var(--fg);padding:6px 12px;font-size:12px;cursor:pointer;transition:background .2s,color .2s}
+#inv:hover,.lang button:hover,#ct:hover,.lang button.on{background:var(--fg);color:var(--bg)}
+.lang{display:flex}
+.lang button{border-radius:0;margin-left:-1px}
+section{max-width:1280px;margin:auto;padding:110px 4vw 40px}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 400px;gap:40px;align-items:center;padding-top:100px}
+.lab{font-size:12px;letter-spacing:.2em;color:var(--mut)}
+h1{font:800 clamp(64px,12.5vw,190px)/.84 "Onest",sans-serif;letter-spacing:-.05em;margin:22px 0 26px}
+h1 .o{color:transparent;-webkit-text-stroke:2px var(--fg)}
+.lead{max-width:480px;color:var(--mut);font-size:18px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{padding:15px 26px;border:1px solid var(--fg);font-size:12px;letter-spacing:.14em;transition:background .2s,color .2s}
+.btn.f{background:var(--fg);color:var(--bg)}
+.btn:hover{background:var(--fg);color:var(--bg)}
+.btn.f:hover{background:transparent;color:var(--fg)}
+.fig{position:relative;border:1px solid var(--line);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:32px 32px;background-position:center}
+.fig i{position:absolute;width:16px;height:16px;border-color:var(--fg);border-style:solid;border-width:0}
+.fig i:nth-of-type(1){top:-1px;left:-1px;border-top-width:2px;border-left-width:2px}
+.fig i:nth-of-type(2){top:-1px;right:-1px;border-top-width:2px;border-right-width:2px}
+.fig i:nth-of-type(3){bottom:-1px;left:-1px;border-bottom-width:2px;border-left-width:2px}
+.fig i:nth-of-type(4){bottom:-1px;right:-1px;border-bottom-width:2px;border-right-width:2px}
+.fig img{height:84%;max-width:88%;object-fit:contain;image-rendering:pixelated;filter:grayscale(1) contrast(1.08);transition:filter .35s,opacity .18s;cursor:pointer}
+.fig:hover img,body.col .fig img{filter:none}
+.cap{position:absolute;left:12px;right:12px;bottom:10px;display:flex;justify-content:space-between;font:500 11px "JetBrains Mono",monospace;color:var(--mut);letter-spacing:.12em}
+.mq{overflow:hidden;white-space:nowrap;border-block:1px solid var(--line);padding:16px 0;margin-top:30px}
+.mq div{display:inline-block;animation:mq 34s linear infinite;will-change:transform;font:800 clamp(28px,4.6vw,56px)/1 "Onest",sans-serif;letter-spacing:-.02em}
+.mq.r div{animation-direction:reverse;color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+h2{font:800 clamp(34px,6vw,76px)/.95 "Onest",sans-serif;letter-spacing:-.04em}
+h2 sup{font:500 13px "JetBrains Mono",monospace;letter-spacing:.1em;color:var(--mut);vertical-align:top;margin-left:8px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.t{position:relative;aspect-ratio:4/5;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:26px 18px 22px;cursor:pointer;overflow:hidden;--mx:50%;--my:50%;background:radial-gradient(180px circle at var(--mx) var(--my),transparent,transparent);transition:background .2s}
+.t:hover{background:radial-gradient(260px circle at var(--mx) var(--my),rgba(128,128,128,.22),transparent 70%)}
+.t small{position:absolute;top:10px;left:12px;font-size:11px;letter-spacing:.12em;color:var(--mut)}
+.t img{max-width:100%;max-height:100%;object-fit:contain;image-rendering:pixelated;filter:grayscale(1) contrast(1.08);transition:filter .35s,transform .35s}
+.t:hover img,body.col .t img{filter:none}
+.t:hover img{transform:scale(1.05)}
+.cta{background:var(--fg);color:var(--bg);flex-direction:column;align-items:flex-start;justify-content:space-between;cursor:pointer;padding:22px}
+.cta:hover{background:var(--bg);color:var(--fg);outline:1px solid var(--fg);outline-offset:-1px}
+.cta b{font:800 clamp(22px,2.6vw,34px)/1 "Onest",sans-serif;letter-spacing:-.03em}
+.cta span{font:500 12px "JetBrains Mono",monospace;letter-spacing:.14em}
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:50px}
+.about p{font-size:clamp(18px,2vw,24px);line-height:1.5}
+.row{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--line)}
+.row:first-child{border-top:1px solid var(--line)}
+.row span:first-child{font:500 12px "JetBrains Mono",monospace;letter-spacing:.16em;color:var(--mut)}
+.row b{font-weight:700}
+.links{border-top:1px solid var(--line)}
+.links a{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 14px;border-bottom:1px solid var(--line);font:800 clamp(24px,4.4vw,56px)/1 "Onest",sans-serif;letter-spacing:-.03em;transition:background .25s,color .25s,padding .25s}
+.links a span{font:500 12px "JetBrains Mono",monospace;letter-spacing:.1em;color:var(--mut);text-align:right;word-break:break-all}
+.links a:hover{background:var(--fg);color:var(--bg);padding-left:30px}
+.links a:hover span{color:var(--bg)}
+footer{padding:80px 4vw 40px;max-width:1280px;margin:auto}
+footer .big{font:800 clamp(60px,19vw,280px)/.8 "Onest",sans-serif;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:2px var(--fg);user-select:none}
+footer .f2{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:28px;font:500 12px "JetBrains Mono",monospace;color:var(--mut);letter-spacing:.12em}
+#lb{position:fixed;inset:0;z-index:95;background:var(--bg);display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px}
+#lb.on{display:flex}
+#lb img{max-height:78vh;max-width:84vw;image-rendering:pixelated}
+#lb .bar{display:flex;gap:14px;align-items:center;font:500 12px "JetBrains Mono",monospace;letter-spacing:.16em}
+#lb button{background:none;border:1px solid var(--fg);color:var(--fg);width:44px;height:44px;font:500 18px "JetBrains Mono",monospace;cursor:pointer}
+#lb button:hover{background:var(--fg);color:var(--bg)}
+#cur{position:fixed;top:0;left:0;width:14px;height:14px;margin:-7px 0 0 -7px;border:1px solid var(--fg);border-radius:50%;pointer-events:none;z-index:120;transition:width .2s,height .2s,margin .2s,background .2s;display:none}
+body.cc #cur{display:block}
+body.cc,body.cc a,body.cc button,body.cc .t,body.cc .fig img{cursor:none}
+#cur.big{width:46px;height:46px;margin:-23px 0 0 -23px;background:rgba(128,128,128,.25)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+[data-r]{display:none}
+body.ru [data-e]{display:none}
+body.ru [data-r]{display:revert}
+@media(max-width:1000px){.hero,.about{grid-template-columns:1fr}.fig{max-width:380px}.grid{grid-template-columns:repeat(3,1fr)}nav{display:none}}
+@media(max-width:640px){.grid{grid-template-columns:repeat(2,1fr)}.cl{display:none}.links a{padding:20px 6px}.links a span{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}#ld{display:none}}
+</style>
+</head>
+<body>
+<div id="ld"><b id="ldn">000</b><span>YUKINO / PORTFOLIO</span></div>
+<div id="bar"></div>
+<div class="grain"></div>
+<div id="cur"></div>
+
+<header>
+  <a class="logo" href="#home" data-s>YUKINO®</a>
+  <nav>
+    <a href="#works"><span data-e>WORKS</span><span data-r>РАБОТЫ</span></a>
+    <a href="#about"><span data-e>ABOUT</span><span data-r>ОБО МНЕ</span></a>
+    <a href="#contacts"><span data-e>CONTACTS</span><span data-r>КОНТАКТЫ</span></a>
+  </nav>
+  <div class="hr">
+    <span class="cl">KYIV <span id="clk">00:00:00</span></span>
+    <button id="inv" title="I">◐</button>
+    <div class="lang"><button id="en" class="on">EN</button><button id="ru">RU</button></div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div>
+    <div class="lab"><span data-e>MINECRAFT SKINMAKER — UKRAINE — 2026</span><span data-r>СКИНМЕЙКЕР MINECRAFT — УКРАИНА — 2026</span></div>
+    <h1><span data-s>YUKI</span><br><span class="o" data-s>NO</span></h1>
+    <p class="lead"><span data-e>Custom Minecraft skins with clean shading, layered clothes and characters with attitude.</span><span data-r>Скины для Minecraft на заказ: чистая шейдинг-проработка, многослойная одежда и персонажи с характером.</span></p>
+    <div class="btns">
+      <a class="btn f" href="#works"><span data-e>SEE WORKS ↓</span><span data-r>СМОТРЕТЬ РАБОТЫ ↓</span></a>
+      <a class="btn" href="#contacts"><span data-e>CONTACT ME</span><span data-r>НАПИСАТЬ МНЕ</span></a>
+    </div>
+  </div>
+  <div class="fig" id="fig">
+    <i></i><i></i><i></i><i></i>
+    <img id="hero" src="assets/skin-5.png" alt="Minecraft skin by Yukino">
+    <div class="cap"><span id="hc">№ 05 / 17</span><span data-e>CLICK TO SWITCH</span><span data-r>КЛИК — ДАЛЬШЕ</span></div>
+  </div>
+</section>
+
+<div class="mq"><div>CUSTOM SKINS ✦ PIXEL ART ✦ CLEAN SHADING ✦ LAYERED OUTFITS ✦ CUSTOM SKINS ✦ PIXEL ART ✦ CLEAN SHADING ✦ LAYERED OUTFITS ✦ CUSTOM SKINS ✦ PIXEL ART ✦ CLEAN SHADING ✦ LAYERED OUTFITS ✦ CUSTOM SKINS ✦ PIXEL ART ✦ CLEAN SHADING ✦ LAYERED OUTFITS ✦ </div></div>
+<div class="mq r"><div>YUKINO ✦ SKINMAKER ✦ UKRAINE ✦ 2026 ✦ YUKINO ✦ SKINMAKER ✦ UKRAINE ✦ 2026 ✦ YUKINO ✦ SKINMAKER ✦ UKRAINE ✦ 2026 ✦ YUKINO ✦ SKINMAKER ✦ UKRAINE ✦ 2026 ✦ YUKINO ✦ SKINMAKER ✦ UKRAINE ✦ 2026 ✦ YUKINO ✦ SKINMAKER ✦ UKRAINE ✦ 2026 ✦ </div></div>
+
+<section id="works" class="rv">
+  <div class="sh">
+    <h2><span data-e>WORKS</span><span data-r>РАБОТЫ</span><sup>(<span id="wn">17</span>)</sup></h2>
+    <button id="ct">COLOR: OFF</button>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section id="about" class="rv">
+  <div class="sh"><h2><span data-e>ABOUT</span><span data-r>ОБО МНЕ</span></h2></div>
+  <div class="about">
+    <p><span data-e>Hi, I’m Yukino, 18, from Ukraine. I draw Minecraft skins: from simple outfits to detailed characters with custom shading. Write to me and we’ll make yours.</span><span data-r>Привет, я Юкино, мне 18, я из Украины. Рисую скины для Minecraft: от простых нарядов до детальных персонажей с собственной шейдингой. Напиши мне, и сделаем твой скин.</span></p>
+    <div>
+      <div class="row"><span data-e>ROLE</span><span data-r>РОЛЬ</span><b>Skinmaker</b></div>
+      <div class="row"><span data-e>BASED IN</span><span data-r>СТРАНА</span><b><span data-e>Ukraine</span><span data-r>Украина</span></b></div>
+      <div class="row"><span data-e>AGE</span><span data-r>ВОЗРАСТ</span><b>18</b></div>
+      <div class="row"><span data-e>LANGUAGES</span><span data-r>ЯЗЫКИ</span><b>RU / EN</b></div>
+      <div class="row"><span data-e>WORKS</span><span data-r>РАБОТ</span><b data-n="17">0</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts" class="rv">
+  <div class="sh"><h2><span data-e>CONTACTS</span><span data-r>КОНТАКТЫ</span></h2></div>
+  <div class="links">
+    <a href="https://t.me/yukinoshitooo" target="_blank" rel="noopener">Telegram <span>@yukinoshitooo ↗</span></a>
+    <a href="https://discord.com/users/743515208265498726" target="_blank" rel="noopener">Discord <span>discord.com/users/… ↗</span></a>
+    <a href="mailto:yukiwertarion@gmail.com">Email <span>yukiwertarion@gmail.com ↗</span></a>
+    <a href="https://github.com/yukin0ww" target="_blank" rel="noopener">GitHub <span>@yukin0ww ↗</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="big">YUKINO</div>
+  <div class="f2"><span>© 2026 YUKINO</span><span><span data-e>PRESS “I” TO INVERT</span><span data-r>НАЖМИ «I» — ИНВЕРСИЯ</span></span><a href="#home">↑ <span data-e>TOP</span><span data-r>НАВЕРХ</span></a></div>
+</footer>
+
+<div id="lb"><img alt=""><div class="bar"><button id="pv">‹</button><span id="lc">01 / 17</span><button id="nx">›</button></div></div>
+
+<script>
+var b=document.body,N=17,ru=function(){return b.classList.contains("ru")};
+function pad(n){return n<10?"0"+n:""+n}
+var CH="!<>-_\\/[]{}=+*^?#01";
+function scr(el){if(!el)return;var o=el.dataset.o||(el.dataset.o=el.textContent),n=0;clearInterval(el._t);
+el._t=setInterval(function(){n+=.5;el.textContent=o.split("").map(function(c,i){return c===" "||i<n?c:CH[Math.random()*CH.length|0]}).join("");if(n>=o.length){clearInterval(el._t);el.textContent=o}},30)}
+document.querySelectorAll("[data-s]").forEach(function(e){e.addEventListener("mouseenter",function(){scr(e)})});
+document.querySelectorAll("nav a").forEach(function(a){a.addEventListener("mouseenter",function(){scr(a.querySelector(ru()?"[data-r]":"[data-e]"))})});
+
+// language
+var ct=document.getElementById("ct");
+function lab(){ct.textContent=(ru()?"ЦВЕТ: ":"COLOR: ")+(b.classList.contains("col")?(ru()?"ВКЛ":"ON"):(ru()?"ВЫКЛ":"OFF"))}
+function setL(l){b.classList.toggle("ru",l==="ru");document.documentElement.lang=l;
+document.getElementById("en").classList.toggle("on",l==="en");document.getElementById("ru").classList.toggle("on",l==="ru");
+try{localStorage.setItem("lang",l)}catch(e){}lab()}
+document.getElementById("en").onclick=function(){setL("en")};
+document.getElementById("ru").onclick=function(){setL("ru")};
+var sl="";try{sl=localStorage.getItem("lang")}catch(e){}
+setL(sl||((navigator.language||"").slice(0,2)==="ru"?"ru":"en"));
+
+// invert + color toggle
+function setInv(v){b.classList.toggle("inv",v);try{localStorage.setItem("inv",v?1:0)}catch(e){}}
+try{if(localStorage.getItem("inv")==="1")setInv(true)}catch(e){}
+document.getElementById("inv").onclick=function(){setInv(!b.classList.contains("inv"))};
+addEventListener("keydown",function(e){if(e.key==="i"||e.key==="I"||e.key==="ш"||e.key==="Ш")setInv(!b.classList.contains("inv"))});
+ct.onclick=function(){b.classList.toggle("col");lab()};
+
+// clock
+function tk(){document.getElementById("clk").textContent=new Date().toLocaleTimeString("en-GB",{timeZone:"Europe/Kyiv"})}
+tk();setInterval(tk,1000);
+
+// gallery
+var G=document.getElementById("grid"),tiles=[];
+for(var i=1;i<=N;i++){var d=document.createElement("div");d.className="t";d.dataset.i=i;
+d.innerHTML='<small>№ '+pad(i)+'</small><img loading="lazy" src="assets/skin-'+i+'.png" alt="Skin '+i+'">';
+(function(d,i){d.onclick=function(){show(i)};
+d.addEventListener("mousemove",function(e){var r=d.getBoundingClientRect();d.style.setProperty("--mx",(e.clientX-r.left)+"px");d.style.setProperty("--my",(e.clientY-r.top)+"px")})})(d,i);
+G.appendChild(d);tiles.push(d)}
+var c=document.createElement("a");c.className="t cta";c.href="#contacts";
+c.innerHTML='<span>→</span><b><span data-e>YOUR SKIN<br>COULD BE<br>HERE</span><span data-r>ТВОЙ СКИН<br>МОЖЕТ БЫТЬ<br>ЗДЕСЬ</span></b><span><span data-e>WRITE ME</span><span data-r>НАПИШИ МНЕ</span></span>';
+G.appendChild(c);
+document.getElementById("wn").textContent=N;
+
+// lightbox
+var lb=document.getElementById("lb"),li=lb.querySelector("img"),cur=1;
+function show(i){cur=(i-1+N)%N+1;li.src="assets/skin-"+cur+".png";document.getElementById("lc").textContent=pad(cur)+" / "+N;lb.classList.add("on")}
+document.getElementById("pv").onclick=function(e){e.stopPropagation();show(cur-1)};
+document.getElementById("nx").onclick=function(e){e.stopPropagation();show(cur+1)};
+lb.onclick=function(e){if(e.target===lb||e.target===li)lb.classList.remove("on")};
+addEventListener("keydown",function(e){if(!lb.classList.contains("on"))return;
+if(e.key==="Escape")lb.classList.remove("on");if(e.key==="ArrowLeft")show(cur-1);if(e.key==="ArrowRight")show(cur+1)});
+
+// hero carousel
+var hi=document.getElementById("hero"),hk=5,ht;
+function hset(n){hk=(n-1+N)%N+1;hi.style.opacity=0;setTimeout(function(){hi.src="assets/skin-"+hk+".png";hi.style.opacity=1;document.getElementById("hc").textContent="№ "+pad(hk)+" / "+N},180)}
+function hrun(){clearInterval(ht);ht=setInterval(function(){hset(hk+1)},4500)}
+hi.onclick=function(){hset(hk+1);hrun()};hrun();
+
+// cursor (light)
+if(matchMedia("(pointer:fine)").matches){b.classList.add("cc");var cu=document.getElementById("cur"),mx=0,my=0,mv=0;
+addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;if(!mv){mv=1;requestAnimationFrame(function(){mv=0;cu.style.transform="translate("+mx+"px,"+my+"px)"})}});
+document.addEventListener("mouseover",function(e){cu.classList.toggle("big",!!e.target.closest("a,button,.t,.fig img"))})}
+
+// progress bar
+addEventListener("scroll",function(){var h=document.documentElement;document.getElementById("bar").style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%"},{passive:true});
+
+// reveal + counters
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.add("in");
+e.target.querySelectorAll("[data-n]").forEach(function(el){var t=+el.dataset.n,s=0;var id=setInterval(function(){s++;el.textContent=s;if(s>=t)clearInterval(id)},60)});io.unobserve(e.target)})},{threshold:.15});
+document.querySelectorAll(".rv").forEach(function(el){io.observe(el)});
+
+// loader
+(function(){var l=document.getElementById("ld"),n=document.getElementById("ldn"),v=0,t0=performance.now();
+function f(t){v=Math.min(100,Math.round((t-t0)/9));n.textContent=("00"+v).slice(-3);
+if(v<100)requestAnimationFrame(f);else{l.classList.add("off");setTimeout(function(){l.remove();document.querySelectorAll(".hero [data-s]").forEach(scr)},800)}}
+requestAnimationFrame(f)})();
+</script>
+</body>
+</html>
